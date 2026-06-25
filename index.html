@@ -12,7 +12,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,7 +38,7 @@
     --line: #1E293B;
     --radius: 14px;
     --shadow-card: 0 1px 0 0 rgba(255,255,255,0.04) inset, 0 8px 24px -8px rgba(0,0,0,0.5);
-    --font-heading: 'Inter', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
   }
@@ -107,11 +107,12 @@
   header#navbar.scrolled { background: color-mix(in srgb, var(--card) 70%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
   nav.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 0; }
   .brand { font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; color: var(--ink); }
-  .brand span { color: var(--accent); }
-  .nav-links { display: none; gap: 1.5rem; align-items: center; }
+  .brand span { color: var(--highlight); }
+  .nav-links { display: none; gap: 1.75rem; align-items: center; }
   @media (min-width: 1024px) { .nav-links { display: flex; } }
-  .nav-links a { font-size: .9rem; color: var(--ink-muted); transition: color .2s; }
-  .nav-links a.active, .nav-links a:hover { color: var(--accent); }
+  .nav-links a { font-family: var(--font-mono); text-transform: lowercase; letter-spacing: .01em; font-size: .85rem; color: var(--ink-muted); transition: color .2s; }
+  .nav-links a::before { content: "// "; color: var(--highlight); }
+  .nav-links a.active, .nav-links a:hover { color: var(--ink); }
   .nav-actions { display: flex; align-items: center; gap: .75rem; }
   .icon-btn { width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; color: var(--ink-muted); transition: color .2s, border-color .2s; }
   .icon-btn:hover { color: var(--ink); border-color: var(--accent); }
@@ -120,12 +121,39 @@
   .search-btn:hover { color: var(--ink); border-color: var(--accent); }
   kbd { font-family: var(--font-mono); font-size: .65rem; border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; background: color-mix(in srgb, var(--bg) 60%, transparent); }
   .btn { display: inline-flex; align-items: center; gap: .5rem; border-radius: 999px; padding: .65rem 1.3rem; font-size: .875rem; font-weight: 500; transition: background-color .2s, border-color .2s, transform .15s; white-space: nowrap; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent-dim); }
+  .btn-primary { background: var(--highlight); color: #06210f; }
+  .btn-primary:hover { background: color-mix(in srgb, var(--highlight) 85%, white 15%); }
   .btn-outline { border: 1px solid var(--line); color: var(--ink); }
-  .btn-outline:hover { border-color: var(--accent); }
+  .btn-outline:hover { border-color: var(--highlight); }
   .nav-cta { display: none; }
   @media (min-width: 640px) { .nav-cta { display: inline-flex; } }
+
+  /* ============ MARQUEE ============ */
+  .marquee-strip { position: relative; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--card); padding: .85rem 0; }
+  .marquee-track { display: flex; width: max-content; animation: marquee 22s linear infinite; }
+  .marquee-track span { font-family: var(--font-heading); font-weight: 600; font-size: 1.1rem; color: var(--ink-muted); padding-inline: 1.25rem; white-space: nowrap; }
+  .marquee-track span.dot { color: var(--highlight); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+  /* ============ WORKED-WITH STRIP ============ */
+  .worked-with { padding: 2.5rem 0 0; }
+  .worked-with .eyebrow { display: block; text-align: center; margin-bottom: 1.5rem; }
+  .worked-with-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; }
+  .worked-with-row span { font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; color: var(--ink-muted); opacity: .75; transition: opacity .2s, color .2s; }
+  .worked-with-row span:hover { opacity: 1; color: var(--ink); }
+
+  /* ============ PULL QUOTE ============ */
+  .pull-quote { border-radius: var(--radius); border: 1px solid var(--line); background: linear-gradient(160deg, color-mix(in srgb, var(--highlight) 10%, var(--card)), var(--card)); padding: 2rem; position: relative; }
+  .pull-quote .mark { font-family: var(--font-heading); font-size: 2.6rem; color: var(--highlight); line-height: 1; display: block; margin-bottom: .5rem; }
+  .pull-quote p { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 500; line-height: 1.5; color: var(--ink); }
+
+  /* ============ FEATURED PROJECT ============ */
+  .featured-project { border-radius: var(--radius); border: 1px solid color-mix(in srgb, var(--highlight) 35%, var(--line)); background: var(--card); padding: 1.75rem; margin-bottom: 2rem; position: relative; overflow: hidden; }
+  .featured-project::before { content: ""; position: absolute; top: -50px; left: -50px; width: 180px; height: 180px; background: color-mix(in srgb, var(--highlight) 22%, transparent); border-radius: 999px; filter: blur(40px); }
+  .featured-project .eyebrow { margin-bottom: .75rem; }
+  .featured-project h3 { font-size: 1.5rem; margin-bottom: .6rem; position: relative; }
+  .featured-project p.desc { color: var(--ink-muted); line-height: 1.7; max-width: 42rem; position: relative; margin-bottom: 1rem; }
 
   /* ============ COMMAND PALETTE ============ */
   .cmdk-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); backdrop-filter: blur(4px); z-index: 100; display: flex; justify-content: center; align-items: flex-start; padding: 12vh 1rem 0; }
@@ -143,7 +171,7 @@
   .reveal.in-view { opacity: 1; transform: translateY(0); }
 
   /* ============ HERO ============ */
-  #hero { position: relative; overflow: hidden; padding-top: 9rem; }
+  #hero { position: relative; overflow: hidden; padding-top: 3.5rem; }
   #hero::before {
     content: ""; position: absolute; inset: 0;
     background-image: linear-gradient(to right, var(--line) 1px, transparent 1px), linear-gradient(to bottom, var(--line) 1px, transparent 1px);
@@ -195,9 +223,10 @@
   .timeline-dot { position: absolute; left: 0; top: 4px; width: 32px; height: 32px; border-radius: 999px; background: var(--bg); border: 2px solid var(--accent); color: var(--accent); display: flex; align-items: center; justify-content: center; }
   @media (min-width: 768px) { .timeline-dot { width: 40px; height: 40px; } }
   .timeline-card { border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); padding: 1.5rem; transition: border-color .2s; }
-  .timeline-card:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+  .timeline-card:hover { border-color: color-mix(in srgb, var(--highlight) 50%, var(--line)); }
   .timeline-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; margin-bottom: .2rem; }
-  .timeline-head h3 { font-size: 1.05rem; font-weight: 600; }
+  .timeline-head h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -.01em; }
+  .timeline-num { font-family: var(--font-mono); font-size: .75rem; color: var(--highlight); margin-bottom: .35rem; display: block; }
   .timeline-meta { font-family: var(--font-mono); font-size: .75rem; color: var(--ink-muted); }
   .timeline-company { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-bottom: 1rem; font-size: .9rem; color: var(--secondary); }
   .timeline-company .loc { display: flex; align-items: center; gap: .3rem; color: var(--ink-muted); }
@@ -342,6 +371,10 @@
 
 <main id="main">
 
+  <div class="marquee-strip" style="margin-top:64px">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
+
   <section id="hero">
     <div class="section-shell hero-grid">
       <div>
@@ -384,6 +417,17 @@
       </div>
     </div>
   </section>
+
+  <div class="worked-with">
+    <div class="section-shell">
+      <span class="eyebrow">Where I've worked</span>
+      <div class="worked-with-row">
+        <span>Peak Technologies, Inc.</span>
+        <span>Lumina Tech Solutions</span>
+        <span>Global Tech Solutions</span>
+      </div>
+    </div>
+  </div>
 
   <section id="about">
     <div class="section-shell about-grid">
@@ -444,15 +488,22 @@
           <p style="margin-top:1rem;font-size:.78rem;color:var(--ink-muted);line-height:1.6">Representative of production dashboards built at Peak Technologies — underlying workbooks are enterprise-confidential, screenshots available on request.</p>
         </div>
       </div>
+
+      <div class="pull-quote reveal" style="margin-top:2rem">
+        <span class="mark">&ldquo;</span>
+        <p>Make the data trustworthy and fast enough that nobody has to wait on a report — or doubt one.</p>
+      </div>
     </div>
   </section>
 
   <section id="projects">
     <div class="section-shell">
-      <div class="reveal" style="max-width:38rem;margin-bottom:2.5rem">
+      <div class="reveal" style="max-width:38rem;margin-bottom:1rem">
         <p class="eyebrow">Projects</p>
         <h2 style="font-size:1.9rem;margin-top:.6rem">Case studies from real engagements.</h2>
       </div>
+      <p class="reveal" id="project-stats-line" style="font-family:var(--font-mono);font-size:.8rem;color:var(--ink-muted);margin-bottom:2.5rem"></p>
+      <div id="featured-project-slot"></div>
       <div class="filter-row" id="filter-row"></div>
       <div class="project-grid" id="project-grid"></div>
     </div>
@@ -529,7 +580,7 @@
           <textarea id="cf-message" name="message" required placeholder="Tell me a bit about the role…"></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">
-          <svg class="icon" viewBox="0 0 24 24" style="stroke:#fff"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          <svg class="icon" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
           Send message
         </button>
         <p class="form-status" id="form-status"></p>
@@ -715,6 +766,16 @@ DATA.navLinks.forEach(l => {
   navLinksEl.appendChild(li);
 });
 
+/* ---------- marquee strip ---------- */
+const marqueeWords = ["FRANKLIN ANTONY", "POWER BI DEVELOPER", "DATA ANALYST", "PL-300 CERTIFIED"];
+const marqueeTrack = $("#marquee-track");
+for (let rep = 0; rep < 2; rep++) {
+  marqueeWords.forEach(w => {
+    marqueeTrack.appendChild(el("span", null, w));
+    marqueeTrack.appendChild(el("span", "dot", "•"));
+  });
+}
+
 /* ---------- theme toggle (in-memory only, defaults to dark) ---------- */
 const SUN = '<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/><line x1="5" y1="5" x2="6.5" y2="6.5"/><line x1="17.5" y1="17.5" x2="19" y2="19"/><line x1="5" y1="19" x2="6.5" y2="17.5"/><line x1="17.5" y1="6.5" x2="19" y2="5"/></svg>';
 const MOON = '<svg class="icon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5Z"/></svg>';
@@ -795,11 +856,13 @@ $$(".counter").forEach(c => counterObserver.observe(c));
 
 /* ---------- render: experience ---------- */
 const expList = $("#experience-list");
-DATA.experience.forEach(job => {
+DATA.experience.forEach((job, idx) => {
   const item = el("div", "timeline-item reveal");
+  const num = String(idx + 1).padStart(2, "0") + " / " + String(DATA.experience.length).padStart(2, "0");
   item.innerHTML = `
     <span class="timeline-dot"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/></svg></span>
     <div class="timeline-card">
+      <span class="timeline-num">${num}</span>
       <div class="timeline-head"><h3>${job.role}</h3><span class="timeline-meta">${job.duration}</span></div>
       <div class="timeline-company"><span>${job.company}</span><span class="loc"><svg class="icon" viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${job.location}</span></div>
       <ul class="bullet-list">${job.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
@@ -840,6 +903,22 @@ const filterRow = $("#filter-row");
 const projectGrid = $("#project-grid");
 const categories = ["All", ...new Set(DATA.projects.flatMap(p => p.category))];
 let activeFilter = "All";
+
+const companyCount = new Set(DATA.projects.map(p => p.company)).size;
+$("#project-stats-line").textContent = `${DATA.projects.length} case studies · ${companyCount} companies · 5M+ rows in production`;
+
+(function renderFeaturedProject() {
+  const p = DATA.projects[0];
+  const slot = $("#featured-project-slot");
+  const block = el("div", "featured-project reveal");
+  block.innerHTML = `
+    <p class="eyebrow">Featured case study</p>
+    <h3>${p.title}</h3>
+    <p class="desc">${p.description}</p>
+    <div class="pill-row" style="margin-bottom:1rem">${p.tools.map(t => `<span class="pill">${t}</span>`).join("")}</div>
+    <div class="pill-row">${p.results.map(r => `<span class="pill" style="border-color:color-mix(in srgb, var(--highlight) 40%, var(--line));color:var(--highlight)">${r}</span>`).join("")}</div>`;
+  slot.appendChild(block);
+})();
 
 function renderProjects() {
   projectGrid.innerHTML = "";
