@@ -329,7 +329,7 @@ export default function Experience() {
             Where I've <span className="gradient-text">Made an Impact</span>
           </h2>
           <p className="text-white/40 text-base max-w-xl mx-auto mt-3">
-            3+ years engineering enterprise-grade business intelligence and data analytics solutions.
+            5+ years engineering enterprise-grade business intelligence and data analytics solutions.
           </p>
         </motion.div>
 

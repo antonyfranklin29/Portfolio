@@ -60,7 +60,7 @@ function TypewriterText() {
 const statItems = [
   { value: '200+', label: 'Stakeholders Served' },
   { value: '40%',  label: 'YoY Efficiency Gain' },
-  { value: '3+',   label: 'Years Experience' },
+  { value: '5+',   label: 'Years Experience' },
   { value: 'PL-300', label: 'Microsoft Certified' },
 ]
 
@@ -182,7 +182,7 @@ export default function Hero() {
           </motion.a>
 
           <motion.a
-            href="/resume.pdf"
+            href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/resume.pdf`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white/80 glass border border-white/10 hover:border-cyan-400/30 hover:text-white transition-all duration-300"
